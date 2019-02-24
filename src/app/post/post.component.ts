@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Post } from '../post';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { compilePipeFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-post',
@@ -75,6 +76,19 @@ export class PostComponent implements OnInit {
       title: post.title,
       body: post.body
     })
+  }
+  onDelete(post: Post){
+    const con = confirm('Are you sure?');
+    if (con){
+      const obj$ = this.http.delete('http://jsonplaceholder.typicode.com/posts/' + post.id);
+      obj$.subscribe({
+        next: () => {
+          const index = this.posts.findIndex((p) => {
+            return p.id === post.id});
+            this.posts.splice(index,1);
+          }
+        })
+    }
   }
 
 }
