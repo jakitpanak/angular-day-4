@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../account.service';
 import { Account } from '../account';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +14,11 @@ export class ProfileComponent implements OnInit {
   form: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private accountSerive: AccountService
-  ) { }
+    private accountSerive: AccountService,
+    private titleService: Title
+  ) { 
+    this.titleService.setTitle('Profile');
+  }
 
   ngOnInit() {
     const {firstName,lastName} = this.accountSerive.account;
