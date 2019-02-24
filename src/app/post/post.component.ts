@@ -83,9 +83,10 @@ export class PostComponent implements OnInit {
       const obj$ = this.http.delete('http://jsonplaceholder.typicode.com/posts/' + post.id);
       obj$.subscribe({
         next: () => {
-          const index = this.posts.findIndex((p) => {
-            return p.id === post.id});
-            this.posts.splice(index,1);
+          // const index = this.posts.findIndex((p) => {
+          //   return p.id === post.id});
+          //   this.posts.splice(index,1);
+          this.posts = this.posts.filter(p => p.id !== post.id);
           }
         })
     }
