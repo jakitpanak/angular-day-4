@@ -17,6 +17,10 @@ const route: Route[] = [
   {
     path: 'posts',
     component: PostComponent
+  },
+  {
+    path: 'posts/:id', // เป็นการส่งค่าอะไรบางอย่างที่ชื่อว่า id ไปกับ path
+    component: PostDetailComponent
   }
 ];
 
