@@ -51,6 +51,7 @@ export class PostComponent implements OnInit {
             const post = new Post(response.id , response.title , response.body);
             const index = this.posts.findIndex((p) => p.id === post.id);
             console.log(index);
+            this.posts[index] = post;
           }
         })
     }else{
