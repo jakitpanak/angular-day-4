@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from '../account';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-header-profile',
@@ -8,9 +9,14 @@ import { Account } from '../account';
 })
 export class HeaderProfileComponent implements OnInit {
 
-  account = new Account('firstname', 'lastname');
+  // private account: Account
+  
+  constructor(
+    public accountService: AccountService
+  ) { 
+    console.log(this.accountService.account)
 
-  constructor() { }
+  }
 
   ngOnInit() {
   }
